@@ -1,0 +1,35 @@
+{
+  "name": "crud-api",
+  "version": "1.0.0",
+  "description": "rs school task 3",
+  "homepage": "https://github.com/CarrotAnikerok/crud-api#readme",
+  "bugs": {
+    "url": "https://github.com/CarrotAnikerok/crud-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarrotAnikerok/crud-api.git"
+  },
+  "license": "ISC",
+  "author": "carrot",
+  "type": "module",
+  "main": "src/server.ts",
+  "scripts": {
+    "build-ts": "tsc -p tsconfig.json",
+    "dev": "nodemon",
+    "build": "tsc src/server.ts",
+    "start": "tsx src/server.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "tsx": "^4.21.0"
+  },
+  "dependencies": {
+    "fastify": "^5.8.2",
+    "package": "^1.0.1",
+    "zod": "^4.3.6"
+  }
+}
