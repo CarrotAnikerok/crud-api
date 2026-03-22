@@ -60,8 +60,7 @@ export async function createProduct(
         );
     }
 
-    productModel.addProduct(body);
-    return reply.code(201).send('Product created');
+    return reply.code(201).send(productModel.addProduct(body));
 }
 
 export async function updateProduct(

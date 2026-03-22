@@ -14,11 +14,12 @@ export class ProductModel {
         })
     }
 
-    addProduct(product: Product): void {
+    addProduct(product: Product): Product {
         if (!product.id) {
             product.id = randomUUID();
         }
         this.productBase.push(product);
+        return product;
     }
 
     updateProduct(id: string, product: Product): boolean {
