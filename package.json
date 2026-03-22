@@ -15,19 +15,18 @@
   "type": "module",
   "main": "src/server.ts",
   "scripts": {
-    "build-ts": "tsc -p tsconfig.json",
-    "dev": "nodemon",
-    "build": "tsc src/server.ts",
-    "start": "tsx src/server.ts"
+    "start:dev": "tsx watch src/server.ts",
+    "start:prod": "tsc && node dist/server"
   },
   "devDependencies": {
     "@types/node": "^25.5.0",
     "nodemon": "^3.1.14",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3",
-    "tsx": "^4.21.0"
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
+    "dotenv": "^17.3.1",
     "fastify": "^5.8.2",
     "package": "^1.0.1",
     "zod": "^4.3.6"
