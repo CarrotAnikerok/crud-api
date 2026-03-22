@@ -1,5 +1,5 @@
 import Fastify, { FastifyInstance } from "fastify";
-import { getRoutes } from "./routes.js";
+import { getRoutes } from "./crud/routes.js";
 import 'dotenv/config';
 
 export async function buildServer() {

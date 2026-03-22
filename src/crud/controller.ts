@@ -1,6 +1,6 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
-import { ProductSchema, type Product } from "./product.js";
-import { ProductModel } from "./productModel.js";
+import { ProductSchema, type Product } from "../view/product.js";
+import { ProductModel } from "../view/productModel.js";
 import z from "zod"; 
 
 export const productModel = new ProductModel();
