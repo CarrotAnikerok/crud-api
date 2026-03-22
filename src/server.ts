@@ -1,36 +1,21 @@
 import Fastify from "fastify";
-import type { FastifyReply, FastifyRequest } from "fastify";
 import { getRoutes } from "./routes.js";
-import type { Product } from "./product.js";
+import 'dotenv/config';
+
+const PORT: number = parseInt(process.env.port || '3000');
 
 const fastify = Fastify({
     logger: true,
 })
 
-fastify.register(getRoutes)
 //use prefix?
-
-fastify.get('/', {
-    handler: async() => {
-        return {message: "mew mew mew!"};
-    }
-})
-
-fastify.post('/api/users', {
-    handler: async(request: FastifyRequest<{Body: Product}>, reply: FastifyReply) => {
-        const body = request.body;
-        console.log({body});
-        console.log(typeof {body});
-        return reply.code(201).send('User created');
-    }
-});
-
-// Run the server!
+fastify.register(getRoutes);
 
 try {
     await fastify.listen({
-      port: 3000
-    })
+      port: PORT
+    });
+    fastify.log.info(`server running on port ${PORT}`);
 } catch (err) {
     fastify.log.error(err)
     process.exit(1)

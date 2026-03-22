@@ -1,4 +1,5 @@
 import type { Product } from "./product.js";
+import { randomUUID } from 'crypto';
 
 export class ProductModel {
     public productBase: Product[] = [];
@@ -9,11 +10,41 @@ export class ProductModel {
 
     getProductById(id: string): Product | undefined {
         return this.productBase.find((product: Product) => {
-            product.id === id;
+            return product.id === id;
         })
     }
 
-    addProduct(product: Product) {
+    addProduct(product: Product): void {
+        if (!product.id) {
+            product.id = randomUUID();
+        }
         this.productBase.push(product);
+    }
+
+    updateProduct(id: string, product: Product): boolean {
+        const oldProduct: Product | undefined = this.getProductById(id);
+        if (!oldProduct) {
+            return false;
+        }
+
+        const {id:_, ...toCopy} = product;
+        Object.assign(oldProduct, toCopy);
+
+        return true;
+    }
+
+    deleteProduct(id: string): boolean {
+        const product: Product | undefined = this.getProductById(id);
+        if (!product) {
+            return false;
+        }
+
+        const index = this.productBase.indexOf(product);
+        if (index > -1) {
+            this.productBase.splice(index, 1);
+            return true;
+        }
+
+        return false;
     }
 }
